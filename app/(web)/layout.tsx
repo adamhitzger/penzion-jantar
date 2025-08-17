@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Averia_Serif_Libre, Montserrat } from "next/font/google";
-import "./globals.css";
-import { Toaster } from "react-hot-toast";
-
-const montserrat = Montserrat({
-  variable:"--font-montserrat",
-   subsets: ["latin"],
-})
-
-const averia = Averia_Serif_Libre({
-  variable: "--font-averia-serif-libre",
-  weight: ["300", "400", "700"],
-  subsets: ["latin"] 
-})
+import "../globals.css";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Penzion Jantar Havlíčkův Brod",
@@ -59,13 +48,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${averia.variable} ${montserrat.variable} antialiased`}
-      >
+    <> 
+        <Navbar/>
+        <main >
           {children}
-          <Toaster/>
-      </body>
-    </html>
+          </main> 
+          <Footer/>
+    </>
   );
 }
