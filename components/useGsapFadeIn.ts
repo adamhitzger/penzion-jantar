@@ -15,7 +15,7 @@ export function useGsapFadeIn(
       ease: "power3.out",
       scrollTrigger: {
         trigger: name,      // stejné id jako trigger
-        start: "top 50%",
+        start: "top 20%",
         toggleActions: "play none none none",
       },
     });

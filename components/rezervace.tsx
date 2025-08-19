@@ -4,7 +4,7 @@ import { ActionResponse } from "@/types"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import { ContactType } from "@/lib/schema"
-import { useActionState, useEffect } from "react"
+import { useActionState, useEffect, useState } from "react"
 import { sendContact } from "@/lib/action"
 import {
   Select,
@@ -19,12 +19,38 @@ import { Loader2, MoveUpRight } from "lucide-react"
 import Link from "next/link"
 import { useGsapFadeIn } from "./useGsapFadeIn"
 import { toast } from "react-hot-toast"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { CalendarIcon } from "lucide-react"
 
 const actionState: ActionResponse<ContactType> = {
     success: false,
     submitted: false,
     message: ""
 }
+
+
+function formatDate(date: Date | undefined) {
+  if (!date) {
+    return ""
+  }
+  return date.toLocaleDateString("en-US", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  })
+}
+function isValidDate(date: Date | undefined) {
+  if (!date) {
+    return false
+  }
+  return !isNaN(date.getTime())
+}
+
 
 export default function Rezervace(){
     const [state, action, isPending] = useActionState(sendContact, actionState)
@@ -36,6 +62,20 @@ export default function Rezervace(){
         toast.error(state.message)
       }
     }, [state.message, state.submitted, state.success])
+
+           const [open, setOpen] = useState(false)
+  const [date, setDate] = useState<Date | undefined>(
+    new Date("2025-06-01")
+  )
+  const [month, setMonth] = useState<Date | undefined>(date)
+  const [value, setValue] = useState(formatDate(date))
+           const [open2, setOpen2] = useState(false)
+  const [date2, setDate2] = useState<Date | undefined>(
+    new Date("2025-06-01")
+  )
+  const [month2, setMonth2] = useState<Date | undefined>(date)
+  const [value2, setValue2] = useState(formatDate(date))
+
     return(
         <section id="rezervace" className="flex flex-col w-full space-y-5  p-4 md:p-8 2xl:p-12">
             <h1 id="my-title5" className="font-averia text-6xl sm:text-7xl text-black">Rezervace</h1>
@@ -93,34 +133,128 @@ export default function Rezervace(){
                     )}
                </div>
 
-                <div className="flex flex-col space-y-2">
+                <div className="relative flex flex-col space-y-2">
                     <Label htmlFor="from">Datum příjezdu*</Label>
-                    <Input 
-                        placeholder="Vaše datum příjezdu"
-                        id="from"
-                        type="date"
-                        name="from"
-                        disabled={isPending}
-                        defaultValue={state?.inputs?.from}
-                        />
-                      {state?.errors?.from && (
+                    
+                      
+                     <Input
+          id="from"
+          value={value}
+          placeholder="Vaše datum příjezdu"
+          className="w-full"
+          disabled={isPending}
+          defaultValue={state?.inputs?.from}
+          name="from"
+          onChange={(e) => {
+            const date = new Date(e.target.value)
+            setValue(e.target.value)
+            if (isValidDate(date)) {
+              setDate(date)
+              setMonth(date)
+            }
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowDown") {
+              e.preventDefault()
+              setOpen(true)
+            }
+          }}
+        />
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              id="date-picker"
+              variant="ghost"
+              className="absolute top-14 right-2 size-8 -translate-y-1/2"
+            >
+              <CalendarIcon className="size-8" />
+              <span className="sr-only">Select date</span>
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent
+            className="w-auto overflow-hidden p-0"
+            align="end"
+            alignOffset={-8}
+            sideOffset={10}
+          >
+            <Calendar
+              mode="single"
+              selected={date}
+              captionLayout="dropdown"
+              month={month}
+              onMonthChange={setMonth}
+              onSelect={(date) => {
+                setDate(date)
+                setValue(formatDate(date))
+                setOpen(false)
+              }}
+            />
+          </PopoverContent>
+        </Popover>
+        {state?.errors?.from && (
                                  <p className="text-base font-semibold text-red-500">
                                  {state.errors.from}
                                </p>
                     )}
                </div>
 
-               <div className="flex flex-col space-y-2">
+               <div className="relative flex flex-col space-y-2">
                     <Label htmlFor="to">Datum odjezdu*</Label>
-                    <Input 
-                        placeholder="Vaše datum odjezdu"
-                        id="to"
-                        type="date"
-                        name="to"
-                        disabled={isPending}
-                        defaultValue={state?.inputs?.to}
-                        />
-                      {state?.errors?.to && (
+                     <Input
+          id="to"
+          value={value2}
+          placeholder="Vaše datum příjezdu"
+          className="w-full"
+          disabled={isPending}
+          defaultValue={state?.inputs?.to}
+          name="to"
+          onChange={(e) => {
+            const date2 = new Date(e.target.value)
+            setValue2(e.target.value)
+            if (isValidDate(date2)) {
+              setDate2(date2)
+              setMonth2(date2)
+            }
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowDown") {
+              e.preventDefault()
+              setOpen2(true)
+            }
+          }}
+        />
+        <Popover open={open2} onOpenChange={setOpen2}>
+          <PopoverTrigger asChild>
+            <Button
+              id="date-picker"
+              variant="ghost"
+              className="absolute top-14 right-2 size-8 -translate-y-1/2"
+            >
+              <CalendarIcon className="size-8" />
+              <span className="sr-only">Select date</span>
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent
+            className="w-auto overflow-hidden p-0"
+            align="end"
+            alignOffset={-8}
+            sideOffset={10}
+          >
+            <Calendar
+              mode="single"
+              selected={date2}
+              captionLayout="dropdown"
+              month={month2}
+              onMonthChange={setMonth2}
+              onSelect={(date) => {
+                setDate2(date)
+                setValue2(formatDate(date))
+                setOpen2(false)
+              }}
+            />
+          </PopoverContent>
+        </Popover>
+        {state?.errors?.to && (
                                  <p className="text-base font-semibold text-red-500">
                                  {state.errors.to}
                                </p>

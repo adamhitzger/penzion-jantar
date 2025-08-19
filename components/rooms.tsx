@@ -49,7 +49,7 @@ export default function Rooms({rooms}: {rooms:HomeSchema}){
       <CarouselContent className="h-[550px]">
         {rooms.rooms.map((i, index) => (
           <CarouselItem key={index} className="h-full m-auto  sm:basis-1/2 lg:basis-1/3 2xl:basis-1/4">
-            <div className="rounded-[15px] bg-foreground flex flex-col  space-y-3 p-4 shadow-lg w-72">
+            <div className="ml-6 rounded-[15px] bg-foreground flex flex-col  space-y-3 p-4 shadow-lg w-72">
                 <h1 className="font-averia text-center text-3xl text-card">{i.name}</h1>
                 
                 <Image alt={i.name} src={i.img} width={700} height={100} className="rounded-[10px]"/>
