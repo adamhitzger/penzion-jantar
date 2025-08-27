@@ -1,6 +1,5 @@
 import About from "@/components/about";
 import Contact from "@/components/contact";
-import Photogallery from "@/components/fotogalerie";
 import Header from "@/components/header";
 import Okoli from "@/components/okoli";
 import Reviews from "@/components/recenze";
@@ -11,15 +10,14 @@ import { HOMEPAGE_QUERY } from "@/sanity/lib/query";
 import { HomeSchema } from "@/types";
 
 export default async function Home() {
-  const data = await sanityFetch({query: HOMEPAGE_QUERY}) as HomeSchema;
+  const data = await sanityFetch<HomeSchema>({query: HOMEPAGE_QUERY}) as HomeSchema;
   console.log(data)
   return (
     <>
       <Header images={data.headerImages}/>
-      <Rooms rooms={data}/>
-      <About images={data.aboutImages}/>
+      <Rooms rooms={data} />
+      <About images={data.aboutImages} heading={data.aboutHeading} text={data.aboutText}/>
       <Okoli lokalita={data}/>
-      <Photogallery images={data.galleryImages}/>
       <Rezervace/>
       <Reviews reviews={data}/>
       <Contact/>

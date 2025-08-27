@@ -6,6 +6,7 @@ import { navLinks } from "@/constants"
 import { NavLink } from "@/types"
 import { SocialIcon } from "react-social-icons"
 import "react-social-icons/facebook"
+import "react-social-icons/instagram"
 import { Button } from "./ui/button"
 import {
   Sheet,
@@ -31,7 +32,8 @@ export default function Navbar(){
                     </Link>
                 ))}
 
-                <SocialIcon url="www.facebook.com/" style={{width: 36, height: 36}} network="facebook"/>
+                <SocialIcon url="https://www.facebook.com/people/Penzion-Jantar/61568191995622/?rdid=g57snBm7FJeGgLfj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19q3WDPxAQ%2F" style={{width: 36, height: 36}} network="facebook"/>
+ <SocialIcon url="https://www.instagram.com/penzionjantarhb/#" style={{width: 36, height: 36}} network="instagram"/>
 
                 <Link href={"/#rezervace"}>
                     <Button className="text-black bg-white rounded-[25px] ">
@@ -58,7 +60,8 @@ export default function Navbar(){
                     </Link>
                 ))}
 
-                <SocialIcon url="https://www.facebook.com/?locale=cs_CZ" network="facebook"/>
+                <SocialIcon url="https://www.facebook.com/people/Penzion-Jantar/61568191995622/?rdid=g57snBm7FJeGgLfj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19q3WDPxAQ%2F" network="facebook"/>
+ <SocialIcon url="https://www.instagram.com/penzionjantarhb/#"  network="instagram"/>
 
                 <Link href={"/#rezervace"}>
                     <Button className="bg-black text-white rounded-[25px] ">

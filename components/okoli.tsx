@@ -14,7 +14,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "./ui/button"
 import { useGsapFadeIn } from "./useGsapFadeIn"
-
+import { PortableText } from "next-sanity"
 export default function Okoli({lokalita}: {lokalita:HomeSchema}){
      const plugin = useRef(
         Autoplay({ delay: 3000, stopOnInteraction: true })
@@ -23,12 +23,8 @@ export default function Okoli({lokalita}: {lokalita:HomeSchema}){
 
     return(
          <section  id="okoli" className="flex flex-col w-full space-y-5  p-4 md:p-8 2xl:p-12">
-            <h1 id="my-title3" className="font-averia text-6xl sm:text-7xl text-black">Poznejte okolí</h1>
-            <p className="text-xl text-left">
-                Všechny pokoje mají vlastní koupelnu se sprchovým koutem a ručníky. Jsou vybaveny lednicí s mrazákem, LCD televizí se satelitem a sadou pro přípravu teplých nápojů (rychlovarná konvice, hrnky). Okna jsou otevíratelná a opatřená žaluziemi.
-  V celém objektu je zdarma k dispozici vysokorychlostní Wi-Fi. Apartmány navíc disponují vlastní kuchyňskou linkou a mikrovlnnou troubou. Na každém patře jsou společné kuchyně s mikrovlnnou i pečicí troubou.
-   Na recepci je možné zapůjčit fén, žehličku, žehlicí prkno, sušák či ventilátor (v omezeném množství). Nabízíme také praní a sušení prádla (za poplatek) a úschovu kol.
-            </p>
+            <h1 id="my-title3" className="font-averia text-6xl sm:text-7xl text-black">{lokalita.okoliHeading}</h1>
+            <PortableText value={lokalita.aboutText}/>
 <Carousel 
             className="w-full h-[800px] max-w-7xl"
             plugins={[plugin.current]}

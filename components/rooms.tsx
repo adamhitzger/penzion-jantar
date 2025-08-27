@@ -11,7 +11,6 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
 import Autoplay from "embla-carousel-autoplay"
@@ -21,23 +20,19 @@ import Image from "next/image"
 import { Button } from "./ui/button"
 import { Tv, Wifi } from "lucide-react"
 import { useGsapFadeIn } from "./useGsapFadeIn"
-
-
+import { PortableText } from "next-sanity"
 export default function Rooms({rooms}: {rooms:HomeSchema}){
      const plugin = useRef(
         Autoplay({ delay: 3000, stopOnInteraction: true })
       )
       const plugin2 = useRef(
-        Autoplay({ delay: 2000, stopOnInteraction: true })
+        Autoplay({ delay: 3000, stopOnInteraction: true })
       )
      useGsapFadeIn("#my-title")
     return(
          <section  id="ubytovani" className="flex flex-col w-full space-y-5  p-4 md:p-8 2xl:p-12">
-            <h1 id="my-title" className="font-averia text-6xl sm:text-7xl text-black">Ubytování</h1>
-            <p className="text-xl text-left">
-                Všechny pokoje mají vlastní koupelnu se sprchovým koutem a ručníky. Jsou vybaveny lednicí s mrazákem, LCD televizí se satelitem a sadou pro přípravu teplých nápojů (rychlovarná konvice, hrnky). Okna jsou otevíratelná a opatřená žaluziemi.
-  V celém objektu je zdarma k dispozici vysokorychlostní Wi-Fi. Apartmány navíc disponují vlastní kuchyňskou linkou a mikrovlnnou troubou. Na každém patře jsou společné kuchyně s mikrovlnnou i pečicí troubou.
-   Na recepci je možné zapůjčit fén, žehličku, žehlicí prkno, sušák či ventilátor (v omezeném množství). Nabízíme také praní a sušení prádla (za poplatek) a úschovu kol. </p>
+            <h1 id="my-title" className="font-averia text-6xl sm:text-7xl text-black">{rooms.ubytHeading}</h1>
+            <PortableText value={rooms.ubytText}/>
 <Carousel 
             className="w-full h-[550px] max-w-7xl"
             plugins={[plugin.current]}
@@ -54,9 +49,9 @@ export default function Rooms({rooms}: {rooms:HomeSchema}){
                 
                 <Image alt={i.name} src={i.img} width={700} height={100} className="rounded-[10px]"/>
                 <div className="w-full flex flex-row justify-between">
-                    <Wifi className="size-12 text-white"/>
+                    <Wifi strokeWidth={2} className="size-8 text-white"/>
 
-         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" 
+         <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" 
      viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1" 
      strokeLinecap="round" strokeLinejoin="round">
 
@@ -70,11 +65,11 @@ export default function Rooms({rooms}: {rooms:HomeSchema}){
   <line x1="16.5" y1="14" x2="16.5" y2="16" />
 </svg>
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50" height="50">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="32" height="32">
 
-  <circle cx="25" cy="25" r="22" stroke="white" strokeWidth="3" fill="none"/>
+  <circle cx="25" cy="25" r="22" stroke="white" strokeWidth="2" fill="none"/>
 
-  <line x1="10.36" y1="10.36" x2="39.64" y2="39.64" stroke="white" strokeWidth="3"/>
+  <line x1="10.36" y1="10.36" x2="39.64" y2="39.64" stroke="white" strokeWidth="2"/>
 
   <g fill="white">
     <circle cx="25" cy="28" r="8"/>
@@ -88,8 +83,8 @@ export default function Rooms({rooms}: {rooms:HomeSchema}){
 
 
 
-                    <Tv className="size-12 text-white"/>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"
+                    <Tv strokeWidth={1} className="size-8 text-white"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
      viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1"
      strokeLinecap="round" strokeLinejoin="round">
 
@@ -101,7 +96,7 @@ export default function Rooms({rooms}: {rooms:HomeSchema}){
   <line x1="17" y1="12" x2="17" y2="14" />
 </svg>
                 </div>
-                <p className="text-right text-3xl font-semibold text-white">
+                <p className="text-right text-2xl font-semibold text-white">
                     {i.price} Kč vč DPH
                 </p>
 <div className="flex flex-row justify-between gap-3">
@@ -109,11 +104,10 @@ export default function Rooms({rooms}: {rooms:HomeSchema}){
     <DialogTrigger className="bg-white h-12 p-2 w-36 rounded-[10px] text-xl font-semibold">
       Galerie
     </DialogTrigger>
-    <DialogContent className="sm:max-w-[625px] rounded-[10px] border-0">
-       <DialogTitle className="font-averia">{i.name}</DialogTitle>
+    <DialogContent className="text-white sm:max-w-[625px] rounded-[10px] border-0 p-0">
        <Carousel 
             className="w-full max-w-7xl"
-            plugins={[plugin.current]}
+            plugins={[plugin2.current]}
             opts={{
     align: "start",
     loop: true,
@@ -122,7 +116,7 @@ export default function Rooms({rooms}: {rooms:HomeSchema}){
       <CarouselContent>
       {i.imgs.map((im:string, i: number) => (
          <CarouselItem key={i}>
-            <div className="w-full h-96 md:h-[32rem]  bg-center bg-cover bg-no-repeat" style={{backgroundImage: `url(${im})`}}>
+            <div className="w-full h-96 md:h-[32rem] rounded-[8px]  bg-center bg-cover bg-no-repeat" style={{backgroundImage: `url(${im})`}}>
               
             </div>
           </CarouselItem>

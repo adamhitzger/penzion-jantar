@@ -25,7 +25,7 @@ export default function Header({images}: {images: string[]}){
       <CarouselContent>
         {images.map((i, index) => (
           <CarouselItem key={index}>
-            <div className="w-full h-96 md:h-[32rem] bg-center bg-cover bg-no-repeat" style={{backgroundImage: `url(${i})`}}>
+            <div className="w-full h-96 md:h-[32rem] lg:h-[38rem] bg-center bg-cover bg-no-repeat" style={{backgroundImage: `url(${i})`}}>
               
             </div>
           </CarouselItem>

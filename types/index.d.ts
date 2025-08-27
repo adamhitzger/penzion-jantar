@@ -14,6 +14,14 @@ export interface ActionResponse<T> {
 }
 
 export interface HomeSchema {
+    ubytHeading: string;
+    ubytText: any;
+    aboutHeading: string;
+    aboutText: any;
+    okoliHeading: string;
+    okoliText: any;
+    reviewHeading: string;
+    reviewText: any;
     headerImages: string[];
     galleryImages: string[];
     aboutImages: string[];

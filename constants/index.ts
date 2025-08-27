@@ -11,7 +11,7 @@ export const navLinks: NavLinks = [
     },
     {
         value: "Fotogalerie",
-        link: "/#fotogalerie"
+        link: "/fotogalerie"
     },
     {
         value: "Recenze",

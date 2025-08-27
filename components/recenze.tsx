@@ -6,17 +6,14 @@ import { HomeSchema } from "@/types"
 import { StarIcon } from "lucide-react"
 import Image from "next/image"
 import { useGsapFadeIn } from "./useGsapFadeIn"
+import { PortableText } from "next-sanity"
 
 export default function Reviews({reviews}: {reviews: HomeSchema}){
     useGsapFadeIn("#my-title6")
     return(
         <section id="recenze" className="w-full flex flex-col text-right space-y-5  p-4 md:p-8 2xl:p-12">
-            <h1 id="my-title6" className="font-averia text-6xl  sm:text-7xl text-black">Recenze</h1>
-            <p className="text-xl">
-                Děkujeme všem, kteří u nás strávili pobyt a podělili se o své dojmy. Vaše zpětná vazba je pro nás nesmírně cenná – pomáhá nám zlepšovat služby a zároveň nás utvrzuje v tom, že má naše práce smysl.
-Níže si můžete přečíst zkušenosti hostů, kteří u nás hledali pohodlí, klid i příjemnou atmosféru – a našli přesně to, co očekávali. Věříme, že i vám jejich hodnocení pomohou při rozhodování.
-Ať už jste přijeli na jednu noc nebo na delší pobyt, snažíme se, aby se u nás každý cítil dobře. O to větší radost máme, když nám hosté napíšou, že se k nám
-            </p>
+            <h1 id="my-title6" className="font-averia text-6xl  sm:text-7xl text-black">{reviews.reviewHeading}</h1>
+            < PortableText value={reviews.reviewText}/>
 
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                 {reviews.reviews && reviews.reviews.map((r,i:number) => (
