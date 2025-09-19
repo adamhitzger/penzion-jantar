@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Averia_Serif_Libre, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import NabytekButton from "@/components/nabytek";
 
 const montserrat = Montserrat({
   variable:"--font-montserrat",
@@ -64,6 +65,7 @@ export default function RootLayout({
         className={`${averia.variable} ${montserrat.variable} antialiased`}
       >
           {children}
+          <NabytekButton/>
           <Toaster/>
       </body>
     </html>

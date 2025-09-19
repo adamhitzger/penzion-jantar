@@ -37,11 +37,11 @@ export default function Okoli({lokalita}: {lokalita:HomeSchema}){
         {lokalita.lokalita.map((i, index) => (
           <CarouselItem key={index} className=" md:basis-1/2 xl:basis-1/3 my-auto">
             <div className="p-5 rounded-[15px] h-[] bg-foreground flex flex-col items-end space-y-3 shadow-lg min-w-72 h-fit">
-                <h1 className="font-averia text-center text-3xl text-card">{i.name}</h1>
+                <h1 className="text-center font-semibold text-4xl text-card">{i.name}</h1>
                 
                 <Image alt={i.name} src={i.img} width={700} height={100} className="rounded-[10px]"/>
                 
-                <p className="text-lg text-center">
+                <p className="text-lg text-white font-medium text-center">
                     {i.text} 
                 </p>
 

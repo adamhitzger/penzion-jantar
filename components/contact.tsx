@@ -20,6 +20,7 @@ export default function Contact(){
            
             <p><span className="text-2xl font-bold">IČO</span>:&nbsp;46482890</p>
             <p><span className="text-2xl font-bold">Fakturace</span>:&nbsp; <Link href={"mailto:josef.mysicka@centrum.cz"}>josef.mysicka@centrum.cz</Link></p>
+            <Link className="text-2xl font-bold underline underline-offset-4 decoration-2 decoration-wavy" href={"https://www.jantar-nabytek.cz"}>Truhlářství Jantar</Link>
             </div>
            <iframe className="w-full md:w-1/2 min-h-96" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2585.794291967203!2d15.577880776858812!3d49.60162854811595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470d00c03b4966b5%3A0x2656317be5e787e3!2sPenzion%20Jantar!5e0!3m2!1scs!2scz!4v1755324940072!5m2!1scs!2scz"   loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
         </section>

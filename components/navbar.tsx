@@ -20,14 +20,14 @@ import { Menu } from "lucide-react"
 export default function Navbar(){
     
     return(
-        <nav className="flex flex-row w-full justify-between items-center p-4 md:p-8 bg-foreground ">
+        <nav className="flex flex-row w-full justify-between items-center p-4 md:p-8 bg-foreground">
             <Link href={"/"}>
                 <Image src={"/logo-black.png"} alt="Logo Penzionu Jantar" width={256} height={200}/>
             </Link>
 
-            <div className="text-2xl hidden xl:flex flex-row items-center space-x-8">
+            <div className="text-2xl text-white hidden xl:flex flex-row items-center space-x-8">
                 {navLinks.map((l: NavLink, i: number) => (
-                    <Link key={i} href={l.link} className="text-black text-nowrap">
+                    <Link key={i} href={l.link} className="text-nowrap">
                         {l.value}
                     </Link>
                 ))}
@@ -44,7 +44,7 @@ export default function Navbar(){
 
             <Sheet>
                 <SheetTrigger asChild>
-        <Menu color="black" width={48} height={48} className="xl:hidden flex"/>
+        <Menu color="white" width={48} height={48} className="xl:hidden flex"/>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
