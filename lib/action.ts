@@ -50,7 +50,7 @@ export async function sendContact(
         const data = validatedData.data;
         const sendMail = await transporter.sendMail({
           from: process.env.FROM_EMAIL,
-          to: "adam.hitzger@icloud.com",
+          to: "rezervace.jantar@centrum.cz",
           subject: "Nový kontakt",
           text: `Celé jméno: ${data.name}, Email: ${data.email}, Tel. číslo: ${data.tel}, Datum příjezdu: ${data.from}, Datum odjezdu: ${data.to}, Počet pokojů: ${data.pocetPokoju} , Typ pokoje: ${data.pokoj}, Počet hostů: ${data.pocetHostu}, Rozložení lůžek: ${data.rozlozeniLuzek} Zpráva: ${data.msg}`,
         });

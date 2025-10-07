@@ -34,14 +34,14 @@ export default function Rooms({rooms}: {rooms:HomeSchema}){
             <h1 id="my-title" className="font-averia text-6xl sm:text-7xl text-black">{rooms.ubytHeading}</h1>
             <PortableText value={rooms.ubytText}/>
 <Carousel 
-            className="w-full h-[550px] max-w-7xl"
+            className="max-4xl. w-full h-[550px] mx-auto"
             plugins={[plugin.current]}
             opts={{
     align: "start",
     loop: true,
   }}
             >
-      <CarouselContent className="h-[550px]">
+      <CarouselContent className="mx-auto h-[550px]">
         {rooms.rooms.map((i, index) => (
           <CarouselItem key={index} className="h-full m-auto  sm:basis-1/2 lg:basis-1/3 2xl:basis-1/4">
             <div className="ml-6 rounded-[15px] bg-foreground flex flex-col  space-y-3 p-4 shadow-lg w-72">
