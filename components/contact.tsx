@@ -11,7 +11,7 @@ export default function Contact(){
                 <h1 id="my-title7" className="font-averia text-6xl sm:text-7xl mb-4">Kontakt</h1>
                 <h2 className="text-3xl font-bold">Adresa</h2>
                 <span>Bezručova 143,</span>
-                <span>Havlířkův Brod, 580 01</span>
+                <span>Havlíčkův Brod, 580 01</span>
                 <span>Česká republika</span>
                 <h2 className="text-3xl font-bold">Telefon</h2>
                 <Link href={"tel:+420720522585"}>+420 720 522 585</Link>
