@@ -34,7 +34,7 @@ export default function Rooms({rooms}: {rooms:HomeSchema}){
             <h1 id="my-title" className="font-averia text-6xl sm:text-7xl text-black">{rooms.ubytHeading}</h1>
             <PortableText value={rooms.ubytText}/>
 <Carousel 
-            className="max-4xl. w-full h-[550px] mx-auto"
+            className="max-w-4xl w-full h-[550px] mx-auto"
             plugins={[plugin.current]}
             opts={{
     align: "start",
