@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+
 import { Textarea } from "./ui/textarea"
 import { Button } from "./ui/button"
 import { Loader2, MoveUpRight } from "lucide-react"
@@ -261,27 +262,7 @@ export default function Rezervace(){
                     )}
                </div>
 
-               <div className="flex flex-col space-y-2">
-                    <Label htmlFor="pokoj">Pokoj*</Label>
-                        <Select name="pokoj" disabled={isPending} defaultValue={state?.inputs?.pokoj}>
-      <SelectTrigger className="w-full sm:w-2/3">
-        <SelectValue placeholder="Vyberte pokoj" />
-      </SelectTrigger>
-      <SelectContent>
-          <SelectItem value="Jednolůžkový">Jednolůžkový</SelectItem>
-          <SelectItem value="Dvoulůžkový">Dvoulůžkový</SelectItem>
-          <SelectItem value="Třílůžkový">Třílůžkový</SelectItem>
-          <SelectItem value="Čtyřlůžkový">Čtyřlůžkový</SelectItem>
-          <SelectItem value="Pokoj Romantik">Pokoj Romantik</SelectItem>
-          <SelectItem value="Dvojlůžkový apartmán">Dvojlůžkový apartmán</SelectItem>
-      </SelectContent>
-    </Select>
-                      {state?.errors?.pokoj && (
-                                 <p className="text-base font-semibold text-red-500">
-                                 {state.errors.pokoj}
-                               </p>
-                    )}
-               </div>
+               
 
                <div className="flex flex-col space-y-2">
                     <Label htmlFor="pocetPokoju">Počet pokojů*</Label>
@@ -331,6 +312,25 @@ export default function Rezervace(){
                       {state?.errors?.rozlozeniLuzek && (
                                  <p className="text-base font-semibold text-red-500">
                                  {state.errors.rozlozeniLuzek}
+                               </p>
+                    )}
+               </div>
+               <div className="flex flex-col space-y-2">
+                    <Label htmlFor="pokoj">Pokoj/e*</Label>
+                        <select multiple className="bg-white/60 h-full rounded-[10px] border-0 p-2" name="pokoj" disabled={isPending} defaultValue={state?.inputs?.pokoj}>
+     
+    
+          <option value="Jednolůžkový">Jednolůžkový</option>
+          <option value="Dvoulůžkový">Dvoulůžkový</option>
+          <option value="Třílůžkový">Třílůžkový</option>
+          <option value="Čtyřlůžkový">Čtyřlůžkový</option>
+          <option value="Pokoj Romantik">Pokoj Romantik</option>
+          <option value="Dvojlůžkový apartmán">Dvojlůžkový apartmán</option>
+
+    </select>
+                      {state?.errors?.pokoj && (
+                                 <p className="text-base font-semibold text-red-500">
+                                 {state.errors.pokoj}
                                </p>
                     )}
                </div>

@@ -8,7 +8,7 @@ export const contactSchema = z.object({
     tel: z.string().min(1).regex(phoneRegex, {message: "Zadali jste číslo ve špatném formátu"}),
     from: z.string().min(1, {message: "Pole je povinné"}),
     to: z.string().min(1, {message: "Pole je povinné"}),
-    pokoj: z.string().min(1, {message: "Pole je povinné"}),
+    pokoj: z.string().array().min(1, {message: "Pole je povinné"}),
     pocetPokoju: z.number().min(1, {message: "Pole je povinné"}),
     pocetHostu: z.number().min(1, {message: "Pole je povinné"}),
     rozlozeniLuzek: z.string().min(1, {message: "Pole je povinné"}),

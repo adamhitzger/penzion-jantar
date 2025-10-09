@@ -29,7 +29,7 @@ export async function sendContact(
         tel: formData.get("tel") as string,
         from: formData.get("from") as string,
         to: formData.get("to") as string,
-        pokoj: formData.get("pokoj") as string,
+        pokoj: formData.getAll("pokoj") as string[],
         pocetHostu: Number(formData.get("pocetHostu")),
         pocetPokoju: Number(formData.get("pocetPokoju")),
         rozlozeniLuzek: formData.get("rozlozeniLuzek") as string,
@@ -52,7 +52,56 @@ export async function sendContact(
           from: process.env.FROM_EMAIL,
           to: "rezervace.jantar@centrum.cz",
           subject: "Nový kontakt",
-          text: `Celé jméno: ${data.name}, Email: ${data.email}, Tel. číslo: ${data.tel}, Datum příjezdu: ${data.from}, Datum odjezdu: ${data.to}, Počet pokojů: ${data.pocetPokoju} , Typ pokoje: ${data.pokoj}, Počet hostů: ${data.pocetHostu}, Rozložení lůžek: ${data.rozlozeniLuzek} Zpráva: ${data.msg}`,
+          html: `
+<div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; color:#111; line-height:1.4; max-width:700px; margin:0 auto; padding:20px;">
+  <header style="text-align:center; padding-bottom:12px; border-bottom:1px solid #eee;">
+    <h1 style="margin:0; font-size:20px;">Nová rezervace / kontaktní zpráva</h1>
+    <p style="margin:6px 0 0; color:#666;">Přehled údajů zaslaných formulářem</p>
+  </header>
+
+  <main style="padding:18px 0;">
+    <table role="presentation" style="width:100%; border-collapse:collapse; margin-bottom:14px;">
+      <tbody>
+        <tr>
+          <td style="padding:8px 0; width:40%; color:#444; font-weight:600;">Celé jméno</td>
+          <td style="padding:8px 0;">${data.name}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0; color:#444; font-weight:600;">Email</td>
+          <td style="padding:8px 0;">
+            <a href="mailto:${data.email}" style="color:#1a73e8; text-decoration:none;">${data.email}</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0; color:#444; font-weight:600;">Tel. číslo</td>
+          <td style="padding:8px 0;">
+            <a href="tel:${data.tel}" style="color:#1a73e8; text-decoration:none;">${data.tel}</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0; color:#444; font-weight:600;">Datum příjezdu</td>
+          <td style="padding:8px 0;">${data.from}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0; color:#444; font-weight:600;">Datum odjezdu</td>
+          <td style="padding:8px 0;">${data.to}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0; color:#444; font-weight:600;">Počet pokojů</td>
+          <td style="padding:8px 0;">${data.pocetPokoju}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0; color:#444; font-weight:600;">Typ pokoje</td>
+          <td style="padding:8px 0;">${data.pokoj}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0; color:#444; font-weight:600;">Počet hostů</td>
+          <td style="padding:8px 0;">${data.pocetHostu}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0; color:#444; font-weight:600;">Rozložení lůžek</td>
+          <td style="padding:8px 0;">${data.rozlozeniLuzek}</td>
+`
         });
         if (!sendMail.accepted) {
           revalidate = false;
