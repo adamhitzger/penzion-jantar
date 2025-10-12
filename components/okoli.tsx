@@ -24,7 +24,7 @@ export default function Okoli({lokalita}: {lokalita:HomeSchema}){
     return(
          <section  id="okoli" className="flex flex-col w-full space-y-5  p-4 md:p-8 2xl:p-12">
             <h1 id="my-title3" className="font-averia text-6xl sm:text-7xl text-black">{lokalita.okoliHeading}</h1>
-            <PortableText value={lokalita.aboutText}/>
+            <PortableText value={lokalita.okoliText}/>
 <Carousel 
             className="w-full h-[800px] max-w-7xl"
             plugins={[plugin.current]}

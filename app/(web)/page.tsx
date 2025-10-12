@@ -17,7 +17,7 @@ export default async function Home() {
       <Header images={data.headerImages}/>
       <Rooms rooms={data} />
       <About images={data.aboutImages} heading={data.aboutHeading} text={data.aboutText}/>
-      <Okoli lokalita={data}/>
+      <Okoli lokalita={data} />
       <Rezervace/>
       <Reviews reviews={data}/>
       <Contact/>
